@@ -1,0 +1,53 @@
+# 配列に入った数字群の中央値を求めたい (意図)
+def center(array)
+    # (実装例)
+    # 並べ替えたい (意図)
+    array = sort_array(array)
+    # 奇数かどうか判定したい (意図)
+    if detect_odd?(array)
+      # 奇数の中央値を取りたい (意図)
+      center_in_odd(array)
+    else
+      # 偶数の中央値を取りたい (意図)
+      center_in_even(array)
+    end
+  end
+
+
+# 配列のソート(意図)
+def sort_array(array)
+    # (実装例)
+    array.sort
+  end
+  
+  # 奇数かどうか(意図)
+  def detect_odd?(array)
+    # (実装例)
+    ( array.size / 2 ) * 2 != array.size
+  end
+    
+  # 偶数の場合の中央値(要素数0はnil) (意図)
+  def center_in_even(array)
+    # (実装例)
+    return nil if array.size == 0
+    index = array.size / 2
+    c2 = [array[index], array[index-1]]
+    c2.sum / c2.size.to_f
+
+end
+  
+# 奇数の場合の中央値(要素数0はnil) (意図)
+def center_in_odd(array)
+  # (実装例)
+  return nil if array.size == 0
+  index = array.size / 2
+  array[index]
+end
+    
+# 中央値テスト
+num_list = [1,5,3,4,2,6,7]
+puts center(num_list) == 4
+num_list = [4,1,2,3,6,5]
+puts center(num_list) == 3.5
+num_list = []
+puts center(num_list) == nil
